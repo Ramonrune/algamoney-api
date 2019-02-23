@@ -31,11 +31,10 @@ public class PessoaService {
 	}
 
 	public Pessoa buscarPessoaPeloCodigo(Long codigo) {
-		Optional<Pessoa> pessoaSalvaOptional = pessoaRepository.findById(codigo);
-		if (pessoaSalvaOptional.isEmpty()) {
+		Pessoa pessoaSalva = pessoaRepository.findOne(codigo);
+		if (pessoaSalva == null) {
 			throw new EmptyResultDataAccessException(1);
-		} else {
-			return pessoaSalvaOptional.get();
 		}
+		return pessoaSalva;
 	}
 }

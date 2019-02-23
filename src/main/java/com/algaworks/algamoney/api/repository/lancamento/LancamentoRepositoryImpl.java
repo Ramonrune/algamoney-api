@@ -17,7 +17,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.util.StringUtils;
 
 import com.algaworks.algamoney.api.model.Lancamento;
-import com.algaworks.algamoney.api.model.Lancamento_;
 import com.algaworks.algamoney.api.repository.filter.LancamentoFilter;
 
 public class LancamentoRepositoryImpl implements LancamentoRepositoryQuery {
@@ -55,21 +54,21 @@ public class LancamentoRepositoryImpl implements LancamentoRepositoryQuery {
 		//where descricao like '%algo%'
 		if(!StringUtils.isEmpty(lancamentoFilter.getDescricao())) {
 			predicates.add(builder.like(
-					builder.lower(root.get(Lancamento_.descricao)),
+					builder.lower(root.get("descricao")),
 					"%" + lancamentoFilter.getDescricao().toLowerCase() + "%"
 			));
 		}
 		
 		if(lancamentoFilter.getDataVencimentoDe() != null) {
 			predicates.add(builder.greaterThanOrEqualTo(
-					root.get(Lancamento_.dataVencimento), 
+					root.get("data_vencimento"), 
 					lancamentoFilter.getDataVencimentoDe()));
 
 		}
 		
 		if(lancamentoFilter.getDataVencimentoAte() != null) {
 			predicates.add(builder.lessThanOrEqualTo(
-					root.get(Lancamento_.dataVencimento),
+					root.get("data_vencimento"),
 					lancamentoFilter.getDataVencimentoAte()
 					));
 			

@@ -57,16 +57,16 @@ public class PessoaResource {
 	
 	@GetMapping("/{codigo}")
 	public ResponseEntity<?> buscarPeloCodigo(@PathVariable Long codigo){
-		Optional<Pessoa> pessoaOptional = pessoaRepository.findById(codigo);
+		Pessoa pessoa = pessoaRepository.findOne(codigo);
 		
-		return pessoaOptional.isPresent() ? ResponseEntity.ok(pessoaOptional.get()) : ResponseEntity.notFound().build();
+		return pessoa != null ? ResponseEntity.ok(pessoa) : ResponseEntity.notFound().build();
 	}
 	
 	
 	@DeleteMapping("/{codigo}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public void remover(@PathVariable Long codigo) {
-		pessoaRepository.deleteById(codigo);
+		pessoaRepository.delete(codigo);
 	}
 	
 	@PutMapping("/{codigo}")
