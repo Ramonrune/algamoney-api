@@ -1,5 +1,6 @@
 package com.algaworks.algamoney.api.resource;
 
+import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
@@ -27,6 +28,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.algaworks.algamoney.api.dto.LancamentoEstatisticaCategoria;
 import com.algaworks.algamoney.api.event.RecursoCriadoEvent;
 import com.algaworks.algamoney.api.exceptionhandler.AlgamoneyExceptionHandler.Erro;
 import com.algaworks.algamoney.api.model.Lancamento;
@@ -52,6 +54,12 @@ public class LancamentoResource {
 	@Autowired
 	private ApplicationEventPublisher publisher;
 
+	@GetMapping("/estatisticas/por-categoria")
+	@PreAuthorize("hasAuthority('ROLE_PESQUISAR_LANCAMENTO') and #oauth2.hasScope('read')")
+	public List<LancamentoEstatisticaCategoria> porCategoria() {
+		return lancamentoRepository.porCategoria(LocalDate.now());
+	}
+	
 	@GetMapping
 	@PreAuthorize("hasAuthority('ROLE_PESQUISAR_LANCAMENTO') and #oauth2.hasScope('read')")
 	public Page<Lancamento> pesquisar(LancamentoFilter lancamentoFilter, Pageable pageable) {
