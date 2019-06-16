@@ -41,7 +41,7 @@ public class LancamentoService {
 		
 		Map<String, Object> parametros = new HashMap<>();
 		parametros.put("DT_INICIO", Date.valueOf(inicio));
-		parametros.put("DT_FIM", Date.valueOf(inicio));
+		parametros.put("DT_FIM", Date.valueOf(fim));
 		parametros.put("REPORT_LOCALE", new Locale("pt", "BR"));
 
 		InputStream inputStream = this.getClass().getResourceAsStream("/relatorios/lancamentos-por-pessoa.jasper");
