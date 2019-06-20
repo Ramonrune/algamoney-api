@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<body style="font-family: Arial; font-size: 14px;">
+
+	<p>Olá!</p>
+	<p>Existem receitas ou despesas vencidas ou vencendo hoje. Veja:</p>
+
+	<p>
+	<table style="width: 100%; border-collapse: collapse; margin: 20px 0;">
+
+		<thead>
+			<tr>
+				<th>Tipo</th>
+				<th>Pessoa</th>
+				<th>Descrição</th>
+				<th>Vencimento</th>
+				<th>Valor</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr style="border-bottom: 1px solid #ccc; border-top: 1px solid #ccc;"
+				th:each="lancamento: ${lancamentos}">
+				<td th:text="${lancamento.tipo.descricao}">Receita</td>
+				<td th:text="${lancamento.pessoa.nome}">Pessoa</td>
+				<td th:text="${lancamento.descricao}">Descrição</td>
+				<td th:text="${#temporals.format(lancamento.dataVencimento, 'dd/MM/yyyy')}" 
+					style="text-align:center;">Vencimento</td>
+				<td style="text-align:right;">Valor</td>
+			</tr>
+
+		</tbody>
+
+	</table>
+
+
+	</p>
+	
+	<p>Obrigado.</p>
+	
+	<p>Equipe Algamoney!</p>
+</body>
+</html>
