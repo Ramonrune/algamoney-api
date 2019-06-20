@@ -1,8 +1,11 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="utf-8" /> 
+</head>
 <body style="font-family: Arial; font-size: 14px;">
 
-	<p>Ol·!</p>
+	<p>Ol√°!</p>
 	<p>Existem receitas ou despesas vencidas ou vencendo hoje. Veja:</p>
 
 	<p>
@@ -12,17 +15,18 @@
 			<tr>
 				<th>Tipo</th>
 				<th>Pessoa</th>
-				<th>DescriÁ„o</th>
+				<th>Descri√ß√£o</th>
 				<th>Vencimento</th>
 				<th>Valor</th>
 			</tr>
 		</thead>
 		<tbody>
 			<tr style="border-bottom: 1px solid #ccc; border-top: 1px solid #ccc;"
-				th:each="lancamento: ${lancamentos}">
+				th:each="lancamento: ${lancamentos}"
+				th:styleappend="${lancamento.receita ? 'color: blue;' : 'color: red;'}">
 				<td th:text="${lancamento.tipo.descricao}">Receita</td>
 				<td th:text="${lancamento.pessoa.nome}">Pessoa</td>
-				<td th:text="${lancamento.descricao}">DescriÁ„o</td>
+				<td th:text="${lancamento.descricao}">Descri√ß√£o</td>
 				<td th:text="${#temporals.format(lancamento.dataVencimento, 'dd/MM/yyyy')}" 
 					style="text-align:center;">Vencimento</td>
 				<td th:text="${#numbers.formatDecimal(lancamento.valor, 0, 'POINT', 2, 'COMMA')}" 
