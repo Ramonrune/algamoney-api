@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <body style="font-family: Arial; font-size: 14px;">
 
 	<p>Olá!</p>
@@ -25,7 +25,8 @@
 				<td th:text="${lancamento.descricao}">Descrição</td>
 				<td th:text="${#temporals.format(lancamento.dataVencimento, 'dd/MM/yyyy')}" 
 					style="text-align:center;">Vencimento</td>
-				<td style="text-align:right;">Valor</td>
+				<td th:text="${#numbers.formatDecimal(lancamento.valor, 0, 'POINT', 2, 'COMMA')}" 
+				style="text-align:right;">Valor</td>
 			</tr>
 
 		</tbody>
