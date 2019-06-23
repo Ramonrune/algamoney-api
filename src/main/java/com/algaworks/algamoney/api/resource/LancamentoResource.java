@@ -3,8 +3,6 @@ package com.algaworks.algamoney.api.resource;
 import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Optional;
-
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 

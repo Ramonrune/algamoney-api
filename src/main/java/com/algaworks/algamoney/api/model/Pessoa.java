@@ -34,7 +34,7 @@ public class Pessoa {
 	@Embedded
 	private Endereco endereco;
 	
-	//@JsonIgnoreProperties("pessoa")
+	@JsonIgnoreProperties("pessoa")
 	@Valid
 	@OneToMany(mappedBy = "pessoa", cascade = CascadeType.ALL)
 	private List<Contato> contatos;
