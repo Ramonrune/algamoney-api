@@ -1,6 +1,7 @@
 package com.algaworks.algamoney.api.model;
 
 import javax.persistence.Embeddable;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 @Embeddable
@@ -13,6 +14,7 @@ public class Endereco {
 	private String cep;
 	
 	@ManyToOne
+	@JoinColumn(name = "codigo_cidade")
 	private Cidade cidade;
 
 	public String getLogradouro() {
