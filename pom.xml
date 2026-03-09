@@ -20,7 +20,7 @@
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
 
-		<jasperreports.version>6.5.1</jasperreports.version>
+		<jasperreports.version>7.0.4</jasperreports.version>
 		<jasperreports-functions.version>6.5.1</jasperreports-functions.version>
 		<jasperreports-fonts.version>6.0.0</jasperreports-fonts.version>
 
